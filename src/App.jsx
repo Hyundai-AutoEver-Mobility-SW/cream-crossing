@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useState } from 'react';
+import Basket from './components/basekt/Basket';
 
 function App() {
-  return <h1>그남자그여자3</h1>;
+  return (
+    <>
+      <div>
+        <header className="bg-sky-300 h-[86px] hidden md:block">헤더입니다</header>
+        <Basket />
+        {/* <footer>ddd</footer> */}
+      </div>
+    </>
+  );
 }
 
 export default App;
