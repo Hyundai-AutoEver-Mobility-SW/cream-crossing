@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Slider from 'react-slick';
+import LazyLoad from 'react-lazyload';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -27,16 +29,16 @@ const Gategories = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const categories = [
-    { title: "HOT 드로우", imageSrc: img1 },
-    { title: "남성 추천", imageSrc: img2 },
-    { title: "여성 추천", imageSrc: img3 },
-    { title: "색다른 추천", imageSrc: img4 },
-    { title: "TOP 10", imageSrc: img5 },
-    { title: "정가 아래", imageSrc: img6 },
-    { title: "든든한 가을 필수템", imageSrc: img7 },
-    { title: "구해요", imageSrc: img8 },
-    { title: "20만원대", imageSrc: img9 },
-    { title: "신상", imageSrc: img10 },
+    { title: "HOT 드로우", imageSrc: "https://i.pinimg.com/736x/b9/7e/7f/b97e7fcf01f683802fa0ebb51d05b696.jpg" },
+    { title: "남성 추천", imageSrc: "https://i.pinimg.com/236x/10/46/a2/1046a2f9ff7948ad059f0093f3d765cc.jpg" },
+    { title: "여성 추천", imageSrc: "https://i.pinimg.com/736x/48/9e/7d/489e7db5c1e07279cd0ede39d025b950.jpg" },
+    { title: "색다른 추천", imageSrc: "https://i.pinimg.com/236x/c6/f5/40/c6f540efadb63834f82d25589e4b3140.jpg" },
+    { title: "TOP 10", imageSrc: "https://i.pinimg.com/736x/fc/b1/08/fcb108ad28642c7bf15c36f1f240413e.jpg" },
+    { title: "정가 아래", imageSrc: "https://img.redbull.com/images/c_fill,g_auto,w_450,h_600/q_auto:low,f_auto/redbullcom/2020/1/14/iyhcnzif9tdofay3v19z/dong" },
+    { title: "든든한 가을 필수템", imageSrc: "https://img.redbull.com/images/c_fill,g_auto,w_450,h_600/q_auto:low,f_auto/redbullcom/2021/10/21/u9aojqkazx4laj2bucrz/sdf" },
+    { title: "구해요", imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu4t1nTalbi31hXyR2j6Mpb8Ekgz95nNdSYw&s" },
+    { title: "20만원대", imageSrc: "https://cdn.gamemeca.com/data_center/210/732/20200325120307.jpg" },
+    { title: "신상", imageSrc: "https://img.redbull.com/images/q_auto,f_auto/redbullcom/2021/10/21/rqcb5zz3021ft5usgi2f/dsf" },
     { title: "GATEGORY1", imageSrc: img11 },
     { title: "GATEGORY2", imageSrc: img12 },
     { title: "GATEGORY3", imageSrc: img13 },
@@ -72,7 +74,6 @@ const Gategories = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="relative w-full overflow-hidden">
-        {/* 슬라이드의 항목을 5개씩 2줄로 표시 */}
         <div className="grid grid-cols-5 gap-">
           {getCurrentItems().map((category, index) => (
             <div key={index} className="relative p-2">
