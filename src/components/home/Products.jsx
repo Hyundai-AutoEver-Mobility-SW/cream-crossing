@@ -61,7 +61,7 @@ function Products({ title, subtitle }) {
               <div key={i} className="product-item">
                 <div className="item-img">
                   <img src={item.img_src} alt="" />
-                  <div className="trade-amount">{item.trade_amount}</div>
+                  <div className="trade-amount">거래 {item.trade_amount}</div>
                   <div className="wish-btn">
                     <IoBookmarkOutline onClick={handleFavorite} className="text-2xl cursor-pointer" />
                     {/* <IoBookmark className="text-2xl" /> */}

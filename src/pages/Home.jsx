@@ -6,6 +6,7 @@ import Categories from '../components/home/Categories';
 import styled from 'styled-components';
 import Products from '../components/home/Products';
 import productsData from '../data/home/productsData';
+import ProductInfinite from '../components/home/ProductInfinite';
 const Container = styled.div`
   margin: 0 auto;
   max-width: 1280px;
@@ -27,6 +28,7 @@ const Home = () => {
       <Products title={productsData[2].title} subtitle={productsData[2].subtitle} />
       <Products title={productsData[3].title} subtitle={productsData[3].subtitle} />
       <Products title={productsData[4].title} subtitle={productsData[4].subtitle} /> */}
+        <ProductInfinite />
       </Container>
     </div>
   );
