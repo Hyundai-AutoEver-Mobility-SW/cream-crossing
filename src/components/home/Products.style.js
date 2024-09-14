@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ProductWrap = styled.div`
   .product-text-wrap {
-    padding: 0 16px;
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
@@ -37,6 +37,13 @@ export const ProductWrap = styled.div`
           /* border: 1px solid rgba(0, 0, 0, 0.5); */
           border-radius: 8px;
         }
+        .trade-amount {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 10px;
+          font-size: 12px;
+        }
         .wish-btn {
           position: absolute;
           bottom: 0;
@@ -52,12 +59,18 @@ export const ProductWrap = styled.div`
         }
         .desc {
           font-size: 13px;
-          padding-bottom: 12px;
-          /* display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          overflow: hidden;
-          text-overflow: ellipsis; */
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          /* background-color: #599200; */
+          border-radius: 8px;
+          padding: 0 8px;
+          color: white;
+          margin-bottom: 5px;
+        }
+        .tags {
+          font-size: 10px;
+          color: rgba(89, 146, 0, 1);
         }
         .price {
           font-size: 14px;

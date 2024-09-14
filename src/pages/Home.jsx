@@ -5,6 +5,7 @@ import Banner2 from '../components/home/Banner2';
 import Categories from '../components/home/Categories';
 import styled from 'styled-components';
 import Products from '../components/home/Products';
+import productsData from '../data/home/productsData';
 const Container = styled.div`
   margin: 0 auto;
   max-width: 1280px;
@@ -21,7 +22,11 @@ const Home = () => {
       <Banner2 />
       {/*  */}
       <Container>
-        <Products />
+        <Products title={productsData[0].title} subtitle={productsData[0].subtitle} />
+        {/* <Products title={productsData[1].title} subtitle={productsData[1].subtitle} />
+      <Products title={productsData[2].title} subtitle={productsData[2].subtitle} />
+      <Products title={productsData[3].title} subtitle={productsData[3].subtitle} />
+      <Products title={productsData[4].title} subtitle={productsData[4].subtitle} /> */}
       </Container>
     </div>
   );

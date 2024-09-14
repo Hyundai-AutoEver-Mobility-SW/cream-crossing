@@ -3,8 +3,12 @@ import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-function Products() {
-  const arrTmp = [1, 2, 3, 4, 5];
+import { useEffect, useState } from 'react';
+import productsDetailData from '../../data/home/productsDetailData';
+
+function Products({ title, subtitle }) {
+  // const { favorites, setFavorites } = useState([]);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -38,38 +42,52 @@ function Products() {
       },
     ],
   };
+  const handleFavorite = id => {
+    // todo
+  };
+  useEffect(() => {
+    console.log(productsDetailData);
+  }, []);
+
   return (
     <>
       <S.ProductWrap>
         <div className="product-text-wrap">
           <div className="title-wrap">
-            <div className="title">Most Popular</div>
-            <div className="subtitle">인기 상품</div>
+            <div className="title">{title}</div>
+            <div className="subtitle">{subtitle}</div>
           </div>
         </div>
         <div className="product-list-wrap">
           <Slider {...settings} className="product-list">
-            {arrTmp.map((item, i) => (
+            {productsDetailData.map((item, i) => (
               <div key={i} className="product-item">
                 <div className="item-img">
-                  <img src="/img59.webp" alt="" />
+                  <img src={item.img_src} alt="" />
+                  <div className="trade-amount">{item.trade_amount}</div>
                   <div className="wish-btn">
-                    <IoBookmarkOutline className="text-2xl" />
+                    <IoBookmarkOutline onClick={handleFavorite} className="text-2xl cursor-pointer" />
                     {/* <IoBookmark className="text-2xl" /> */}
                   </div>
                 </div>
                 <div className="info-box">
-                  <div className="name">Stussy</div>
-                  <div className="desc">Stussy Brushed Out Stock Skullcap Beanie Brown</div>
-                  <div className="price">99,000원</div>
-                  <div className="price-desc">즉시 구매가</div>
+                  <div className="name">{item.name}</div>
+                  <div className="desc" style={{ backgroundColor: item.color }}>
+                    {item.desc}
+                  </div>
+                  <div className="tags" style={{ color: item.color }}>
+                    {' '}
+                    {item.tags}
+                  </div>
+                  <div className="price">{item.price}</div>
+                  <div className="price-desc">{item.price_desc}</div>
                 </div>
               </div>
             ))}
           </Slider>
         </div>
         <div className="more-wrap">
-          <div className="more-btn">더보기</div>
+          <div className="more-btn cursor-pointer">더보기</div>
         </div>
       </S.ProductWrap>
     </>
