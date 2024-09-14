@@ -4,11 +4,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useState } from 'react';
-import productsDetailData from '../../data/home/productsDetailData';
-
+import generateProductsDetailData from '../../data/home/productsDetailData';
 function Products({ title, subtitle }) {
   // const { favorites, setFavorites } = useState([]);
-
   const settings = {
     dots: false,
     infinite: true,
@@ -42,12 +40,11 @@ function Products({ title, subtitle }) {
       },
     ],
   };
+  const [products, setProducts] = useState(generateProductsDetailData(0, 10));
   const handleFavorite = id => {
     // todo
   };
-  useEffect(() => {
-    console.log(productsDetailData);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -60,7 +57,7 @@ function Products({ title, subtitle }) {
         </div>
         <div className="product-list-wrap">
           <Slider {...settings} className="product-list">
-            {productsDetailData.map((item, i) => (
+            {products.map((item, i) => (
               <div key={i} className="product-item">
                 <div className="item-img">
                   <img src={item.img_src} alt="" />

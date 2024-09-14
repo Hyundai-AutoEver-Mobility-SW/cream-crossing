@@ -90,24 +90,25 @@ const image_sources = Array.from({ length: 113 }, (_, i) => `/animal/img${i + 1}
 
 const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
 
-const productsDetailData = Array.from({ length: 50 }, () => {
-  const name = getRandomElement(names);
-  const personality = getRandomElement(personalities);
-  const tradeAmount = getRandomElement(trade_amounts);
-  const price = getRandomElement(prices);
-  const priceDesc = getRandomElement(price_desc);
-  const imgSrc = getRandomElement(image_sources);
+const generateProductsDetailData = (start = 0, limit = 10) => {
+  return Array.from({ length: limit }, () => {
+    const name = getRandomElement(names);
+    const personality = getRandomElement(personalities);
+    const tradeAmount = getRandomElement(trade_amounts);
+    const price = getRandomElement(prices);
+    const priceDesc = getRandomElement(price_desc);
+    const imgSrc = getRandomElement(image_sources);
 
-  return {
-    name,
-    desc: personality.desc,
-    tags: personality.tags,
-    color: personality.color,
-    trade_amount: tradeAmount,
-    price,
-    price_desc: priceDesc,
-    img_src: imgSrc,
-  };
-});
-
-export default productsDetailData;
+    return {
+      name,
+      desc: personality.desc,
+      tags: personality.tags,
+      color: personality.color,
+      trade_amount: tradeAmount,
+      price,
+      price_desc: priceDesc,
+      img_src: imgSrc,
+    };
+  });
+};
+export default generateProductsDetailData;
