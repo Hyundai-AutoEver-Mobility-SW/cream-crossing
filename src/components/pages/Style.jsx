@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Style = () => {
-  return <h1>Style Page</h1>;
+  return;
 };
 
 export default Style;

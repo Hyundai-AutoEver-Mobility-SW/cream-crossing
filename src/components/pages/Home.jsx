@@ -1,10 +1,16 @@
 import React from 'react';
-import ImageSlider from '../ImageSlider';
+import Hero from './Hero';
+import Banner from './Banner'
+import Banner2 from './Banner2'
+import Categories from './Categories';
 
 const Home = () => {
   return (
     <div>
-      <ImageSlider />
+      <Hero />
+      <Categories />
+      <Banner />
+      <Banner2 />
     </div>
   );
 };
