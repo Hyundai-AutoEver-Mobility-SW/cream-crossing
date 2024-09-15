@@ -2,14 +2,16 @@ import React from 'react';
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import hero1 from '../../assets/animal/banner1.webp';
-import hero2 from '../../assets/animal/banner6.jpg';
-import hero3 from '../../assets/animal/banner2.jpg';
+import hero1 from '../../assets/banner/banner1.webp';
+import hero2 from '../../assets/banner/banner12.jpg';
+import hero3 from '../../assets/banner/banner28.jpg';
 
 const PreviousArrow = ({ onClick }) => (
   <div
     className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
     onClick={onClick}
+    aria-label="Previous Slide"
+    role="button"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +19,7 @@ const PreviousArrow = ({ onClick }) => (
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      strokeWidth="1.0" 
+      strokeWidth="1.0"
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
     </svg>
@@ -28,14 +30,16 @@ const NextArrow = ({ onClick }) => (
   <div
     className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
     onClick={onClick}
+    aria-label="Next Slide"
+    role="button"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-16 w-16 text-gray-200" 
+      className="h-16 w-16 text-gray-200"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      strokeWidth="1.0" 
+      strokeWidth="1.0"
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
     </svg>
@@ -44,8 +48,9 @@ const NextArrow = ({ onClick }) => (
 
 const Hero = () => {
   const settings = {
-    dots: true, 
+    dots: true,
     infinite: true,
+    lazyLoad: 'ondemand',
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -60,7 +65,7 @@ const Hero = () => {
     ),
     customPaging: i => (
       <div
-        className="w-1.5 h-1.5 bg-gray-300 rounded-full transition-all duration-300" // 기본 점 크기 및 색상 설정
+        className="w-1.5 h-1.5 bg-gray-300 rounded-full transition-all duration-300"
         style={{ display: 'inline-block' }}
       />
     )
