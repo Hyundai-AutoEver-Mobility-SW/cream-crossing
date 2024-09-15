@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-import Home from './components/pages/Home';
-import Style from './components/pages/Style';
-import Shop from './components/pages/Shop';
+import Shop from './pages/Shop';
+import Home from './pages/Home';
+import Style from './pages/Style';
 
 function App() {
   return (

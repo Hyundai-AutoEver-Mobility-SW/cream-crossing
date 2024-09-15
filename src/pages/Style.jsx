@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Style = () => {
-  return;
-};
+function Style() {
+  return <div></div>;
+}
 
 export default Style;
