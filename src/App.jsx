@@ -5,7 +5,6 @@ import Footer from './components/common/Footer';
 import Home from './components/pages/Home';
 import Style from './components/pages/Style';
 import Shop from './components/pages/Shop';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
