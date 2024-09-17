@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Basket from './components/basekt/Basket';
+import Basket from './components/basket/Basket';
 
 function App() {
   return (
