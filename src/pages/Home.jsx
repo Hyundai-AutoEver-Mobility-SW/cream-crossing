@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import Products from '../components/home/Products';
 import productsData from '../data/home/productsData';
 import ProductInfinite from '../components/home/ProductInfinite';
+import VisualSlide from '../components/home/VisualSlide';
+import ShopSelectModal from '../components/common/ShopSelectModal';
 const Container = styled.div`
   margin: 0 auto;
   max-width: 1280px;
@@ -16,6 +18,7 @@ const Container = styled.div`
 const Home = () => {
   return (
     <div>
+      <ShopSelectModal />
       <Hero />
       <Categories />
       <Banner />
@@ -23,6 +26,7 @@ const Home = () => {
       <Banner2 />
       {/*  */}
       <Container>
+        <VisualSlide />
         <Products title={productsData[0].title} subtitle={productsData[0].subtitle} />
         {/* <Products title={productsData[1].title} subtitle={productsData[1].subtitle} />
       <Products title={productsData[2].title} subtitle={productsData[2].subtitle} />

@@ -1,4 +1,4 @@
-import * as S from './ProductInfinite.style';
+import * as S from '../../styles/home/ProductInfinite.style';
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import generateProductsDetailData from '../../data/home/productsDetailData';

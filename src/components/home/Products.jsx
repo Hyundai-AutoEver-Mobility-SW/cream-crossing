@@ -1,4 +1,4 @@
-import * as S from './Products.style';
+import * as S from '../../styles/home/Products.style';
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
