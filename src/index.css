@@ -8,6 +8,12 @@
   font-weight: 100 900;
   font-style: normal;
 }
+@font-face {
+  font-family: 'gamja-flower-regular';
+  src: url('./assets/fonts/GamjaFlower-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
 body {
   font-family: 'Pretendard-Regular', sans-serif;
   background-color: #dedede;

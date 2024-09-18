@@ -1,14 +1,13 @@
+import styled from 'styled-components';
 import Hero from '../components/home/Hero';
 import TopAnimal from '../components/home/TopAnimal';
 import Banner from '../components/home/Banner';
 import Banner2 from '../components/home/Banner2';
 import Categories from '../components/home/Categories';
-import styled from 'styled-components';
 import Products from '../components/home/Products';
 import productsData from '../data/home/productsData';
 import ProductInfinite from '../components/home/ProductInfinite';
 import VisualSlide from '../components/home/VisualSlide';
-import ShopSelectModal from '../components/common/ShopSelectModal';
 const Container = styled.div`
   margin: 0 auto;
   max-width: 1280px;
@@ -18,7 +17,6 @@ const Container = styled.div`
 const Home = () => {
   return (
     <div>
-      <ShopSelectModal />
       <Hero />
       <Categories />
       <Banner />

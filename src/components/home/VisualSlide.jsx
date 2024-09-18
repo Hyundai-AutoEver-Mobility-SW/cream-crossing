@@ -27,12 +27,11 @@ function VisualSlide() {
   return (
     <SliderWrapper>
       <Slider {...settings}>
-        {/* 같은 이미지를 여러 번 반복해서 넣어 무한 반복을 자연스럽게 만듦 */}
         <div>
-          <Image src="/visual_slide_bg.png" alt="Slide Image" />
+          <Image src="/img/visual_slide_bg.png" alt="Slide Image" />
         </div>
         <div>
-          <Image src="/visual_slide_bg.png" alt="Slide Image" />
+          <Image src="/img/visual_slide_bg.png" alt="Slide Image" />
         </div>
       </Slider>
     </SliderWrapper>
