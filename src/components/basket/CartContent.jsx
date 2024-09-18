@@ -114,7 +114,9 @@ function CartContent() {
         </div>
 
         {productList.map((product, i) => (
-          <div key={i} className="text-collapse rounded-b-lg p-4 bg-gray-50 flex justify-between">
+          <div
+            key={i}
+            className={`text-collapse p-4 bg-gray-50 flex justify-between ${isModalOpen ? '' : 'rounded-b-lg'}`}>
             <div className="header">
               <div className="text-body gap-x-[2px] gap-y-0 flex items-center">
                 <p className="text-sm text-gray-900 text-left w-auto">예상 결제금액</p>

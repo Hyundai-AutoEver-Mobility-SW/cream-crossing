@@ -4,7 +4,7 @@ import CartContent from './CartContent';
 function Basket() {
   return (
     <>
-      <div className="container mx-auto cart-top">
+      <div className=" mx-auto cart-top">
         <h1 className="font-bold text-[1.5em] p-4 text-center w-full bg-red-200">장바구니</h1>
 
         {/* cart-content에 sticky 적용 */}
