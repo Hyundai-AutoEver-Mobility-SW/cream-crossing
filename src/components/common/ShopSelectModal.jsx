@@ -86,12 +86,13 @@ const S_ShopSelectModal = styled.div`
           border: none;
           outline: none;
           padding: 5px 13px;
-          font-size: 1.5em;
+          font-size: 1.6em;
           border-radius: 30px;
-          background-color: #ff9f02;
-          color: white;
+          /* background-color: #ff9f02; */
+          background-color: transparent;
+          color: #6e3c32;
           &::placeholder {
-            color: white;
+            color: #6e3c32;
           }
         }
       }

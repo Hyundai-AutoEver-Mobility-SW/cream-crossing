@@ -9,16 +9,18 @@ import Style from './pages/Style';
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <Router>
-      <Header />
-      <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/style" element={<Style />} />
-        {/* <Route path="/shop" element={<Shop />} /> */}
-      </Routes>
-      <Footer />
-    </Router>
+    <>
+      <Router>
+        <Header className="my-container" />
+        <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/style" element={<Style />} />
+          {/* <Route path="/shop" element={<Shop />} /> */}
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   );
 }
 

@@ -33,6 +33,9 @@ function VisualSlide() {
         <div>
           <Image src="/img/visual_slide_bg.png" alt="Slide Image" />
         </div>
+        <div>
+          <Image src="/img/visual_slide_bg.png" alt="Slide Image" />
+        </div>
       </Slider>
     </SliderWrapper>
   );

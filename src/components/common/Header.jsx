@@ -27,31 +27,22 @@ const Header = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive
-                  ? 'hidden md:flex font-bold text-black'
-                  : 'hidden md:flex text-black no-underline'
-              }
-            >
+                isActive ? 'hidden md:flex font-bold text-black' : 'hidden md:flex text-black no-underline'
+              }>
               HOME
             </NavLink>
             <NavLink
               to="/style"
               className={({ isActive }) =>
-                isActive
-                  ? 'hidden md:flex font-bold text-black'
-                  : 'hidden md:flex text-black no-underline'
-              }
-            >
+                isActive ? 'hidden md:flex font-bold text-black' : 'hidden md:flex text-black no-underline'
+              }>
               STYLE
             </NavLink>
             <NavLink
               to="/shop"
               className={({ isActive }) =>
-                isActive
-                  ? 'hidden md:flex font-bold text-black'
-                  : 'hidden md:flex text-black no-underline'
-              }
-            >
+                isActive ? 'hidden md:flex font-bold text-black' : 'hidden md:flex text-black no-underline'
+              }>
               SHOP
             </NavLink>
             <NavLink to="/search" className="inline-block relative top-1">
@@ -89,8 +80,7 @@ const Header = () => {
                   isActive
                     ? 'text-red-600 font-bold border-b-2 border-red-600 pb-2'
                     : 'text-red-600 border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 추석슈퍼세일
               </NavLink>
             </li>
@@ -99,8 +89,7 @@ const Header = () => {
                 to="/recommend"
                 className={({ isActive }) =>
                   isActive ? 'font-bold border-b-2 border-black pb-2' : 'border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 추천
               </NavLink>
             </li>
@@ -109,8 +98,7 @@ const Header = () => {
                 to="/ranking"
                 className={({ isActive }) =>
                   isActive ? 'font-bold border-b-2 border-black pb-2' : 'border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 랭킹
               </NavLink>
             </li>
@@ -119,8 +107,7 @@ const Header = () => {
                 to="/luxury"
                 className={({ isActive }) =>
                   isActive ? 'font-bold border-b-2 border-black pb-2' : 'border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 럭셔리
               </NavLink>
             </li>
@@ -129,8 +116,7 @@ const Header = () => {
                 to="/men"
                 className={({ isActive }) =>
                   isActive ? 'font-bold border-b-2 border-black pb-2' : 'border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 남성
               </NavLink>
             </li>
@@ -139,8 +125,7 @@ const Header = () => {
                 to="/women"
                 className={({ isActive }) =>
                   isActive ? 'font-bold border-b-2 border-black pb-2' : 'border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 여성
               </NavLink>
             </li>
@@ -149,8 +134,7 @@ const Header = () => {
                 to="/discover"
                 className={({ isActive }) =>
                   isActive ? 'font-bold border-b-2 border-black pb-2' : 'border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 발견
               </NavLink>
             </li>
@@ -159,8 +143,7 @@ const Header = () => {
                 to="/events"
                 className={({ isActive }) =>
                   isActive ? 'font-bold border-b-2 border-black pb-2' : 'border-b-2 border-transparent pb-2'
-                }
-              >
+                }>
                 이벤트
               </NavLink>
             </li>
