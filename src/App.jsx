@@ -11,14 +11,16 @@ function App() {
   return (
     <>
       <Router>
-        <Header className="my-container" />
-        <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/style" element={<Style />} />
-          {/* <Route path="/shop" element={<Shop />} /> */}
-        </Routes>
-        <Footer />
+        <div className="home-container">
+          <Header />
+          <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/style" element={<Style />} />
+            {/* <Route path="/shop" element={<Shop />} /> */}
+          </Routes>
+          <Footer />
+        </div>
       </Router>
     </>
   );

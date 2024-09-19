@@ -9,21 +9,31 @@ import ProductInfinite from '../components/home/ProductInfinite';
 import VisualSlide from '../components/home/VisualSlide';
 const Home = () => {
   return (
-    <div>
-      <Hero className="max-container" />
+    <>
+      <div className="full-w">
+        <Hero />
+      </div>
       <Categories />
       <Products title={productsData[0].title} subtitle={productsData[0].subtitle} />
       <TopAnimal />
-      <Banner />
+      <div className="full-w">
+        <Banner />
+      </div>
       <Products title={productsData[1].title} subtitle={productsData[1].subtitle} />
-      <VisualSlide />
+      <div className="full-w">
+        <VisualSlide />
+      </div>
       <Products title={productsData[2].title} subtitle={productsData[2].subtitle} />
-      <Banner2 />
+      <div className="full-w">
+        <Banner2 />
+      </div>
       <Products title={productsData[3].title} subtitle={productsData[3].subtitle} />
-      <Banner2 />
+      <div className="full-w">
+        <Banner2 />
+      </div>
       <Products title={productsData[4].title} subtitle={productsData[4].subtitle} />
       <ProductInfinite />
-    </div>
+    </>
   );
 };
 

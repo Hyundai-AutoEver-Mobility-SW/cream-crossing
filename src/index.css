@@ -48,11 +48,15 @@ ul {
   margin: 0;
   padding: 0;
 }
-.my-container{
+.home-container {
   max-width: 1280px;
   margin: 0 auto;
 }
-.max-container{
-  max-width: 100%;
-  margin: 0 auto;
+
+.full-w {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* position: relative;
+  left: 50%;
+  margin-left: -50vw; */
 }
