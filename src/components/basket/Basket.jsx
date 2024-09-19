@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CartContent from './CartContent';
+import CartOrderInfo from './CartOrderInfo';
+import productList from './data/productList';
 
 function Basket() {
+  const [allCheck, setallCheck] = useState(false);
+  const handleAllCheck = () => {
+    if (!allCheck) {
+      // 전체선택
+      setallCheck(true);
+    } else {
+    }
+  };
+
   return (
     <>
       <div className=" mx-auto cart-top">
@@ -25,7 +36,11 @@ function Basket() {
             <div className="cart-header-wrap w-full sm:w-[700px] h-[48px] mx-auto">
               <div className="text-header p-3 px-4 bg-purple-100 flex justify-between">
                 <div className="group flex items-center">
-                  <input type="checkbox" className="form-checkbox h-5 w-5 text-blue-600 mr-2" />
+                  <input
+                    type="checkbox"
+                    onClick={handleAllCheck}
+                    className="form-checkbox h-5 w-5 text-blue-600 mr-2"
+                  />
                   <div className="text-body font-semibold text-sm">
                     <p>전체 선택</p>
                   </div>
@@ -39,7 +54,11 @@ function Basket() {
             </div>
           </div>
         </div>
-        <CartContent />
+
+        {productList.map(product => (
+          <CartContent product={product} />
+        ))}
+        {/* <CartOrderInfo /> */}
 
         {/* 스크롤 테스트를 위한 추가 공간
         <div className="h-[1500px] bg-gray-100"></div> */}
