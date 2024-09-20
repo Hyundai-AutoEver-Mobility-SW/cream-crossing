@@ -78,7 +78,7 @@ function CartContent({ product }) {
           </div>
           <div className="right">
             <div className="text-body gap-x-[2px] gap-y-0 flex items-center">
-              <p className="text-sm text-gray-900 text-right w-auto font-semibold">{productList[0].allCost}</p>
+              <p className="text-sm text-gray-900 text-right w-auto font-semibold">{product.allCost}</p>
               <div className="content-image rounded-full w-[16px] h-[16px] cursor-pointer" onClick={toggleModal}>
                 <picture>
                   <img src="src/assets/cartimg/question.png" alt="" />
@@ -88,8 +88,7 @@ function CartContent({ product }) {
           </div>
         </div>
 
-        <CartModalView isOpen={isModalOpen} onClose={toggleModal} />
-        {/* <CartOrderInfo /> */}
+        <CartModalView isOpen={isModalOpen} onClose={toggleModal} product={product} />
       </div>
     </div>
   );

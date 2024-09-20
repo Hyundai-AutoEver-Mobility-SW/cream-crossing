@@ -23,7 +23,7 @@ function Basket() {
           <div className="flex justify-center items-center">
             <div className="cart-tabs w-[700px] text-center flex relative bg-indigo-100">
               <div className="cart-tab active relative h-[60px] w-1/2 cursor-pointer p-2 border-b border-gray-300">
-                <div className="count">2</div>
+                <div className="count">{productList.length}</div>
                 <div className="title font-semibold text-[13px]">Kream 배송</div>
               </div>
               <div className="cart-tab2 relative h-[60px] w-1/2 cursor-pointer p-2 border-b border-gray-300">
@@ -58,10 +58,7 @@ function Basket() {
         {productList.map(product => (
           <CartContent product={product} />
         ))}
-        {/* <CartOrderInfo /> */}
-
-        {/* 스크롤 테스트를 위한 추가 공간
-        <div className="h-[1500px] bg-gray-100"></div> */}
+        <CartOrderInfo />
       </div>
     </>
   );
