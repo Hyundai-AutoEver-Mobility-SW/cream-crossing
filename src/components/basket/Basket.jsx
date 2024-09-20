@@ -5,12 +5,8 @@ import productList from './data/productList';
 
 function Basket() {
   const [allCheck, setallCheck] = useState(false);
-  const handleAllCheck = () => {
-    if (!allCheck) {
-      // 전체선택
-      setallCheck(true);
-    } else {
-    }
+  const handleAllCheck = e => {
+    setallCheck(e.target.checked);
   };
 
   return (
@@ -38,7 +34,8 @@ function Basket() {
                 <div className="group flex items-center">
                   <input
                     type="checkbox"
-                    onClick={handleAllCheck}
+                    onChange={handleAllCheck}
+                    checked={allCheck}
                     className="form-checkbox h-5 w-5 text-blue-600 mr-2"
                   />
                   <div className="text-body font-semibold text-sm">
@@ -56,7 +53,7 @@ function Basket() {
         </div>
 
         {productList.map(product => (
-          <CartContent product={product} />
+          <CartContent product={product} allCheck={allCheck} />
         ))}
         <CartOrderInfo />
       </div>

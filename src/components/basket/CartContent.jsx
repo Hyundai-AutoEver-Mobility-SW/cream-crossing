@@ -1,31 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import CartModalView from '../modal/CartModalView';
 import CartOrderInfo from './CartOrderInfo';
 import productList from './data/productList';
-function CartContent({ product }) {
+function CartContent({ product, allCheck }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen); // 상태를 토글하여 모달 열고 닫기
   };
 
+  const [selectedProducts, setSelectedProducts] = useState([]);
+
+  useEffect(() => {
+    console.log(allCheck);
+  }, [allCheck]);
+
   return (
     <div className="cart-content w-full bg-gray-100">
-      {/* <div className="text-2xl">
-        <p>안녕하세요</p>
-        {productList[0].image}
-        <br />
-        {product.image}
-      </div> */}
       <div className="layout-list w-full sm:w-[700px] mx-auto">
         <div className="divider h-[24px]"></div>
         <div className="content-header rounded-t-lg p-[20px_16px_10px] bg-white flex justify-between">
           <div className="group flex items-center">
             <input type="checkbox" className="form-checkbox h-5 w-5 text-blue-600 mr-2" />
-            <div className="text-body font-semibold text-sm">
-              <p> </p>
-            </div>
+            <div className="text-body font-semibold text-sm"></div>
           </div>
           <div className="group">
             <button className="ml-2 text-xs cursor-pointer border-box rounded-[100px] overflow-hidden px-[10px] py-[4px] shadow-[inset_0px_0px_0px_1px_rgb(235,235,235)]">
