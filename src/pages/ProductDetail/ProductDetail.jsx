@@ -3,6 +3,7 @@ import * as S from './ProductDetail.style';
 import { throttle } from 'lodash';
 import { useParams } from 'react-router-dom';
 import { getImgSrc, getPrice } from '../../data/home/productsDetailData';
+import ProductInfinite from '../../components/home/ProductInfinite';
 
 export const ProductDetail = () => {
   const { num } = useParams();
@@ -30,19 +31,22 @@ export const ProductDetail = () => {
     };
   }, [checkIntersection]);
 
+  const imgSrc = getImgSrc(Number(num) + 1);
+  const buyPrice = getPrice(Number(num) * 1000);
+  const sellPrice = getPrice(Number(num) * 1000 * 0.8);
   return (
     <S.ProductDetailWrapper>
       <S.ContentWrapper>
         <S.MainWrapper>
           <S.MainLeft $imgPosY={imgPosY}>
             <S.ImgWrapper>
-              <S.Img src={getImgSrc(Number(num) + 1)} ref={mainImgFooterRef} />
+              <S.Img src={imgSrc} ref={mainImgFooterRef} />
             </S.ImgWrapper>
           </S.MainLeft>
           <S.MainRight>
             <S.PriceWrapper>
               <S.PriceTitle>즉시 구매가</S.PriceTitle>
-              <S.PriceValue>{getPrice(Number(num) * 1000)}</S.PriceValue>
+              <S.PriceValue>{buyPrice}</S.PriceValue>
             </S.PriceWrapper>
             <S.TitleWrapper>
               <S.Title>동물의 숲 핑크토끼</S.Title>
@@ -77,11 +81,11 @@ export const ProductDetail = () => {
             <S.ColorButtonWrapper>
               <S.ColorButton $color={'red'}>
                 <S.ColorButtonTitle>구매</S.ColorButtonTitle>
-                <S.ColorButtonPrice>154,000원</S.ColorButtonPrice>
+                <S.ColorButtonPrice>{buyPrice}</S.ColorButtonPrice>
               </S.ColorButton>
               <S.ColorButton $color={'green'}>
                 <S.ColorButtonTitle>판매</S.ColorButtonTitle>
-                <S.ColorButtonPrice>194,000원</S.ColorButtonPrice>
+                <S.ColorButtonPrice>{sellPrice}</S.ColorButtonPrice>
               </S.ColorButton>
             </S.ColorButtonWrapper>
             <S.CartButton>장바구니</S.CartButton>
@@ -153,6 +157,7 @@ export const ProductDetail = () => {
             </S.RecommendItem>
           </S.RecommendItemWrapper>
         </S.RecommendWrapper>
+        <ProductInfinite />
       </S.ContentWrapper>
     </S.ProductDetailWrapper>
   );
