@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from "react-slick";
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import hero1 from '../../assets/banner/banner1.webp';
@@ -11,16 +11,14 @@ const PreviousArrow = ({ onClick }) => (
     className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
     onClick={onClick}
     aria-label="Previous Slide"
-    role="button"
-  >
+    role="button">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="h-16 w-16 text-gray-200"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      strokeWidth="1.0"
-    >
+      strokeWidth="1.0">
       <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
     </svg>
   </div>
@@ -31,16 +29,14 @@ const NextArrow = ({ onClick }) => (
     className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
     onClick={onClick}
     aria-label="Next Slide"
-    role="button"
-  >
+    role="button">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="h-16 w-16 text-gray-200"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      strokeWidth="1.0"
-    >
+      strokeWidth="1.0">
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
     </svg>
   </div>
@@ -68,7 +64,7 @@ const Hero = () => {
         className="w-1.5 h-1.5 bg-gray-300 rounded-full transition-all duration-300"
         style={{ display: 'inline-block' }}
       />
-    )
+    ),
   };
 
   return (
@@ -102,9 +98,9 @@ const Hero = () => {
         </div>
       </Slider>
 
-      <style jsx>{`
+      <style>{`
         .slick-dots li.slick-active div {
-          background-color: #4a5568; 
+          background-color: #4a5568;
         }
       `}</style>
     </div>

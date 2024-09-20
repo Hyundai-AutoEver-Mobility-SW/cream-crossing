@@ -83,21 +83,24 @@ const trade_amounts = [
   '13.3만',
   '5,789',
 ];
-const prices = ['155,000원', '305,000원', '120,000원', '250,000원', '200,000원', '220,000원', '195,000원', '210,000원'];
+
 const price_desc = ['즉시구매가', '구매가'];
 
-const image_sources = Array.from({ length: 113 }, (_, i) => `/animal/img${i + 1}.webp`);
-
 const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
+const getRandomNum = () => Math.floor(Math.random() * 113);
+
+export const getImgSrc = randomNumber => `/src/assets/animal/img${randomNumber}.webp`;
+export const getPrice = amount => `${amount.toLocaleString()}원`;
 
 const generateProductsDetailData = (start = 0, limit = 10) => {
   return Array.from({ length: limit }, () => {
     const name = getRandomElement(names);
     const personality = getRandomElement(personalities);
     const tradeAmount = getRandomElement(trade_amounts);
-    const price = getRandomElement(prices);
     const priceDesc = getRandomElement(price_desc);
-    const imgSrc = getRandomElement(image_sources);
+    const randomNumber = getRandomNum();
+    const imgSrc = getImgSrc(randomNumber + 1);
+    const price = getPrice(randomNumber * 1000);
 
     return {
       name,
@@ -105,9 +108,10 @@ const generateProductsDetailData = (start = 0, limit = 10) => {
       tags: personality.tags,
       color: personality.color,
       trade_amount: tradeAmount,
-      price,
       price_desc: priceDesc,
-      img_src: imgSrc,
+      imgNumber: randomNumber,
+      imgSrc,
+      price,
     };
   });
 };

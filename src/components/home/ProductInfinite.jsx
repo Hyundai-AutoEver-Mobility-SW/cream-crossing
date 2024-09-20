@@ -2,6 +2,7 @@ import * as S from '../../styles/home/ProductInfinite.style';
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import generateProductsDetailData from '../../data/home/productsDetailData';
+import { Link } from 'react-router-dom';
 
 function ProductInfinite() {
   const [products, setProducts] = useState(generateProductsDetailData(0, 12));
@@ -47,6 +48,7 @@ function ProductInfinite() {
   const handleFavorite = () => {
     // 즐겨찾기 처리 로직
   };
+
   return (
     <>
       <S.ProductInfinite>
@@ -59,9 +61,9 @@ function ProductInfinite() {
         <div className="product-list-wrap">
           <div className="product-list">
             {products.map((item, i) => (
-              <div key={i} className="product-item">
+              <Link to={`/detail/${item.imgNumber}`} className="product-item" key={i}>
                 <div className="item-img">
-                  <img src={item.img_src} alt="" />
+                  <img src={item.imgSrc} alt="" />
                   <div className="trade-amount">거래 {item.trade_amount}</div>
                   <div className="wish-btn">
                     <IoBookmarkOutline onClick={handleFavorite} className="text-2xl cursor-pointer" />
@@ -80,7 +82,7 @@ function ProductInfinite() {
                   <div className="price">{item.price}</div>
                   <div className="price-desc">{item.price_desc}</div>
                 </div>
-              </div>
+              </Link>
             ))}
             <div ref={observerRef} style={{ height: '1px' }}></div>
           </div>
