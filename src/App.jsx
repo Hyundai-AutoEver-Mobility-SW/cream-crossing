@@ -36,7 +36,7 @@ function App() {
           element: <Style />,
         },
         {
-          path: 'detail/:id',
+          path: 'detail/:num',
           element: <ProductDetail />,
         },
       ],

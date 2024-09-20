@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import * as S from './ProductDetail.style';
 import { throttle } from 'lodash';
 import { useParams } from 'react-router-dom';
+import { getImgSrc, getPrice } from '../../data/home/productsDetailData';
 
 export const ProductDetail = () => {
-  const { id } = useParams();
+  const { num } = useParams();
   const [imgPosY, setImgPosY] = useState(0);
   const mainImgFooterRef = useRef(null);
   const scrollFooterRef = useRef(null);
@@ -35,13 +36,13 @@ export const ProductDetail = () => {
         <S.MainWrapper>
           <S.MainLeft $imgPosY={imgPosY}>
             <S.ImgWrapper>
-              <S.Img src={`/src/assets/animal/img${id}.webp`} ref={mainImgFooterRef} />
+              <S.Img src={getImgSrc(Number(num) + 1)} ref={mainImgFooterRef} />
             </S.ImgWrapper>
           </S.MainLeft>
           <S.MainRight>
             <S.PriceWrapper>
               <S.PriceTitle>즉시 구매가</S.PriceTitle>
-              <S.PriceValue>130,000원</S.PriceValue>
+              <S.PriceValue>{getPrice(Number(num) * 1000)}</S.PriceValue>
             </S.PriceWrapper>
             <S.TitleWrapper>
               <S.Title>동물의 숲 핑크토끼</S.Title>
