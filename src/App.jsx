@@ -1,25 +1,49 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Shop from './pages/Shop';
 import Home from './pages/Home';
 import Style from './pages/Style';
+import { ProductDetail } from './pages/ProductDetail/ProductDetail';
+import { ScrollRestoration } from 'react-router-dom';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  return (
-    <Router>
-      <Header />
-      <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/style" element={<Style />} />
-        {/* <Route path="/shop" element={<Shop />} /> */}
-      </Routes>
-      <Footer />
-    </Router>
-  );
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: (
+        <>
+          <Header />
+          <Outlet />
+          <Footer />
+          <ScrollRestoration />
+        </>
+      ),
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: 'shop',
+          element: <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />,
+        },
+        {
+          path: 'style',
+          element: <Style />,
+        },
+        {
+          path: 'detail/:id',
+          element: <ProductDetail />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
