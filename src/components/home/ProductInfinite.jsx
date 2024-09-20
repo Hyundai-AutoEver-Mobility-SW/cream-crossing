@@ -61,7 +61,7 @@ function ProductInfinite() {
         <div className="product-list-wrap">
           <div className="product-list">
             {products.map((item, i) => (
-              <Link to={`detail/${item.imgNumber}`} className="product-item" key={i}>
+              <Link to={`/detail/${item.imgNumber}`} className="product-item" key={i}>
                 <div className="item-img">
                   <img src={item.imgSrc} alt="" />
                   <div className="trade-amount">거래 {item.trade_amount}</div>
