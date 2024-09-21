@@ -16,10 +16,12 @@ function App() {
       path: '/',
       element: (
         <>
-          <Header />
-          <Outlet />
-          <Footer />
-          <ScrollRestoration />
+          <div className="home-container">
+            <Header />
+            <Outlet />
+            <Footer />
+            <ScrollRestoration />
+          </div>
         </>
       ),
       children: [
