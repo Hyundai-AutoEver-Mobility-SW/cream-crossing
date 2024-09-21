@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const SliderWrapper = styled.div`
   width: 100%;
   overflow: hidden;
+  margin: 150px 0;
 `;
 const Image = styled.img`
   width: 300%; /* 이미지가 슬라이더의 너비보다 더 크도록 설정 */

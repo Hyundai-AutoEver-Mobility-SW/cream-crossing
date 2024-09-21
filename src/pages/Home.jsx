@@ -7,40 +7,30 @@ import Products from '../components/home/Products';
 import productsData from '../data/home/productsData';
 import ProductInfinite from '../components/home/ProductInfinite';
 import VisualSlide from '../components/home/VisualSlide';
-import Overlay from '../components/home/Overlay';
-import { useEffect, useState } from 'react';
-
+import HeroAltSection from '../components/home/HeroAltSection';
+import ScrollToView from '../components/home/ScrollToView';
+import * as S from '../styles/Home.style';
+import BannerGray from '../components/home/BannerGray';
 const Home = () => {
-  const [isOverlay, setIsOverlay] = useState(true);
-  const handleSkip = () => {
-    setIsOverlay(false);
-  };
-  useEffect(() => {
-    if (isOverlay) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOverlay]);
   return (
     <>
-      {isOverlay && (
-        <div>
-          <Overlay handleSkip={handleSkip} />
-        </div>
-      )}
       <div>
         <div className="full-w">
-          <Hero />
+          <HeroAltSection />
+          {/* <Hero /> */}
+          <ScrollToView />
+        </div>
+        <div className="full-w relative">
+          <S.BackgroundText>CATEGORIES</S.BackgroundText>
         </div>
         <Categories />
+        <div className="full-w">
+          <Banner imageSrc={'/img/banner/banner01.png'} titleLeft="NEW" titleRight="ARRIVAL" />
+        </div>
         <Products title={productsData[0].title} subtitle={productsData[0].subtitle} />
         <TopAnimal />
         <div className="full-w">
-          <Banner />
+          <BannerGray imageSrc={'/img/banner/banner02.png'} titleLeft="MOST" titleRight="POPULAR" />
         </div>
         <Products title={productsData[1].title} subtitle={productsData[1].subtitle} />
         <div className="full-w">
@@ -48,11 +38,11 @@ const Home = () => {
         </div>
         <Products title={productsData[2].title} subtitle={productsData[2].subtitle} />
         <div className="full-w">
-          <Banner2 />
+          <Banner imageSrc={'/img/banner/banner03.png'} titleLeft="NEW" titleRight="ARRIVAL" />
         </div>
         <Products title={productsData[3].title} subtitle={productsData[3].subtitle} />
         <div className="full-w">
-          <Banner2 />
+          <BannerGray imageSrc={'/img/banner/banner05.png'} titleLeft="MOST" titleRight="POPULAR" />
         </div>
         <Products title={productsData[4].title} subtitle={productsData[4].subtitle} />
         <ProductInfinite />

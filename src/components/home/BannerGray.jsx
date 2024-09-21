@@ -4,17 +4,17 @@ const BannerSection = styled.section`
   width: 100%;
   height: 400px;
   margin: 2rem 0;
+  background-color: rgba(0, 0, 0, 0.1);
   background-image: url(${props => props.imageSrc});
   background-size: 40%;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  border: 2px solid black;
 `;
 const LeftContentBox = styled.div`
   position: absolute;
   top: 50%;
-  left: 15%;
+  left: 14%;
   transform: translateY(-50%);
   text-align: left;
   color: #000000;
@@ -36,7 +36,7 @@ const Title = styled.h2`
   font-weight: bold;
 `;
 
-const Banner = ({ imageSrc, titleLeft, titleRight }) => {
+const BannerGray = ({ imageSrc, titleLeft, titleRight }) => {
   return (
     <BannerSection imageSrc={imageSrc}>
       <LeftContentBox>
@@ -50,4 +50,4 @@ const Banner = ({ imageSrc, titleLeft, titleRight }) => {
   );
 };
 
-export default Banner;
+export default BannerGray;
