@@ -98,7 +98,7 @@ const Hero = () => {
         </div>
       </Slider>
 
-      <style jsx>{`
+      <style>{`
         .slick-dots li.slick-active div {
           background-color: #4a5568;
         }

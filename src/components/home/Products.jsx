@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useState } from 'react';
 import generateProductsDetailData from '../../data/home/productsDetailData';
+import { Link } from 'react-router-dom';
 function Products({ title, subtitle }) {
   // const { favorites, setFavorites } = useState([]);
   const settings = {
@@ -58,9 +59,9 @@ function Products({ title, subtitle }) {
         <div className="product-list-wrap">
           <Slider {...settings} className="product-list">
             {products.map((item, i) => (
-              <div key={i} className="product-item">
+              <Link to={`/detail/${item.imgNumber}`} className="product-item" key={i}>
                 <div className="item-img">
-                  <img src={item.img_src} alt="" />
+                  <img src={item.imgSrc} alt="" />
                   <div className="trade-amount">거래 {item.trade_amount}</div>
                   <div className="wish-btn">
                     <IoBookmarkOutline onClick={handleFavorite} className="text-2xl cursor-pointer" />
@@ -79,7 +80,7 @@ function Products({ title, subtitle }) {
                   <div className="price">{item.price}</div>
                   <div className="price-desc">{item.price_desc}</div>
                 </div>
-              </div>
+              </Link>
             ))}
           </Slider>
         </div>

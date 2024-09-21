@@ -18,23 +18,22 @@ import img34 from '../../assets/animal/img34.webp';
 import img35 from '../../assets/animal/img35.webp';
 
 const categories = [
-  { title: "Carmen", imageSrc: img21 },
-  { title: "Dotty", imageSrc: img22 },
-  { title: "Cole", imageSrc: img23 },
-  { title: "Agent S", imageSrc: img24 },
-  { title: "Tank", imageSrc: img25 },
-  { title: "Merengue", imageSrc: img26 },
-  { title: "Goose", imageSrc: img27 },
-  { title: "Rhonda", imageSrc: img28 },
-  { title: "Julian", imageSrc: img29 },
-  { title: "Muffy", imageSrc: img30 },
-  { title: "Tia", imageSrc: img31 },
-  { title: "Frita", imageSrc: img32 },
-  { title: "Shep", imageSrc: img33 },
-  { title: "Eunice", imageSrc: img34 },
-  { title: "Baabara", imageSrc: img35 },
+  { title: 'Carmen', imageSrc: img21 },
+  { title: 'Dotty', imageSrc: img22 },
+  { title: 'Cole', imageSrc: img23 },
+  { title: 'Agent S', imageSrc: img24 },
+  { title: 'Tank', imageSrc: img25 },
+  { title: 'Merengue', imageSrc: img26 },
+  { title: 'Goose', imageSrc: img27 },
+  { title: 'Rhonda', imageSrc: img28 },
+  { title: 'Julian', imageSrc: img29 },
+  { title: 'Muffy', imageSrc: img30 },
+  { title: 'Tia', imageSrc: img31 },
+  { title: 'Frita', imageSrc: img32 },
+  { title: 'Shep', imageSrc: img33 },
+  { title: 'Eunice', imageSrc: img34 },
+  { title: 'Baabara', imageSrc: img35 },
 ];
-
 
 const TopAnimal = () => {
   return (
@@ -48,7 +47,7 @@ const TopAnimal = () => {
               <img
                 src={category.imageSrc}
                 alt={category.title}
-                className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-28 lg:h-28 object-cover rounded-md"
+                className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-36 lg:h-36 object-cover rounded-md"
               />
             </LazyLoad>
             <p className="mt-2 text-sm font-medium text-center">{category.title}</p>
