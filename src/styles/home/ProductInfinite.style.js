@@ -4,7 +4,7 @@ export const ProductInfinite = styled.div`
   .divider {
     height: 1px;
     background-color: rgba(34, 34, 34, 0.2);
-    margin-bottom: 20px;
+    margin: 50px 0;
   }
   .product-text-wrap {
     padding: 0 20px;

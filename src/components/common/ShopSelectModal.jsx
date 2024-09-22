@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { IoMdSearch } from 'react-icons/io';
 import { useState } from 'react';
-import { calculateDistance } from '../../utils/kakaomap';
+import { calculateDistance, getAddressFromCoords } from '../../utils/kakaomap';
 const popIn = keyframes`
   0% {
     opacity: 0;
@@ -18,6 +18,7 @@ const popIn = keyframes`
   }
 `;
 const S_ShopSelectModal = styled.div`
+  min-width: 750px;
   position: fixed;
   top: 0;
   left: 0;
@@ -26,6 +27,7 @@ const S_ShopSelectModal = styled.div`
   height: 100%;
   z-index: 100;
   background-color: rgba(255, 234, 180, 1);
+  background: url('/img/bg-farm.png') no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,18 +38,10 @@ const S_ShopSelectModal = styled.div`
     justify-content: center;
     align-items: center;
   }
-  img {
+  img.bg {
     opacity: 0;
     animation: ${popIn} 0.5s ease-out 1s forwards;
     transform: scale(0.2);
-  }
-  .close-btn {
-    position: absolute;
-    max-width: 363px;
-    width: 40%;
-    bottom: 5%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
   }
   .map-contents {
     position: absolute;
@@ -60,7 +54,6 @@ const S_ShopSelectModal = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 5px;
 
       .search-bg {
         display: block;
@@ -69,44 +62,54 @@ const S_ShopSelectModal = styled.div`
       }
       .search-content {
         position: absolute;
-        width: 70%;
         top: 50%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin: 0 auto;
-        padding: 0 40px;
         transform: translateY(-50%);
+        .contents {
+          /* display: flex;
+          align-items: center;
+          justify-content: center; */
+        }
         .icon {
-          font-size: 40px;
+          font-size: 30px;
           color: #ff9f02; // 아이콘 색상
         }
 
         .search-input {
+          margin-left: 10px;
+          width: 200px;
           border: none;
           outline: none;
           padding: 5px 13px;
-          font-size: 1.6em;
+          font-size: 1em;
           border-radius: 30px;
-          /* background-color: #ff9f02; */
           background-color: transparent;
-          color: #6e3c32;
+          /* color: #ff9966; */
+          color: transparent;
+          -webkit-text-stroke: 2px #ac5a43;
+          background: url('/img/snow.png');
+          background-size: contain;
+          background-clip: text; /* 배경을 텍스트에만 표시 */
+          -webkit-background-clip: text;
+          text-fill-color: transparent; /* 텍스트를 투명하게 만듦 */
+          -webkit-text-fill-color: transparent;
+
           &::placeholder {
-            color: #6e3c32;
+            color: #ff9966;
           }
         }
       }
     }
     .desc {
-      font-size: 1em;
-      color: #6e3c32;
+      font-size: 0.6em;
+      color: #ac5a43;
       text-align: center;
-      margin-bottom: 10px;
     }
     .btn-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap: 20px;
+      grid-gap: 10px;
       justify-items: center;
       .btn-item {
         position: relative;
@@ -121,33 +124,48 @@ const S_ShopSelectModal = styled.div`
 
         .store-name {
           position: absolute;
-          top: 30%;
-          left: 30%;
+          top: 25%;
+          left: 25%;
           transform: translateX(-50%);
-          color: #6e3c32;
-          font-size: 2em;
+          font-size: 1em;
+          color: transparent;
+          -webkit-text-stroke: 2px #46645b;
+          background: url('/img/snow-green.png');
+          background-size: contain;
+          background-clip: text;
+          -webkit-background-clip: text;
+          text-fill-color: transparent;
+          -webkit-text-fill-color: transparent;
         }
         .store-dist {
           position: absolute;
-          top: 30%;
-          right: 10%;
-          transform: translateX(-50%);
-          color: #6e3c32;
-          font-size: 1.1em;
+          top: 25%;
+          right: 15%;
+          color: #ac5a43;
+          font-size: 0.7em;
         }
       }
+    }
+    .close-btn {
+      margin: 0 auto;
+      margin-top: 10px;
+      max-width: 363px;
+      width: 45%;
+      cursor: pointer;
     }
   }
 `;
 
 function ShopSelectModal({ onClose }) {
   const [sortedStores, setSortedStores] = useState([
-    { name: '고양점', distance: 0 },
-    { name: '광명점', distance: 27.18 },
-    { name: '기흥점', distance: 50.17 },
-    { name: '동부산점', distance: 343.26 },
+    { name: '고양점', distance: 0, lat: 37.6585, lng: 126.8314 },
+    { name: '광명점', distance: 27.18, lat: 37.418, lng: 126.8868 },
+    { name: '기흥점', distance: 50.17, lat: 37.2694, lng: 127.1191 },
+    { name: '동부산점', distance: 343.26, lat: 35.2437, lng: 129.2227 },
   ]);
+
   const [searchInput, setSearchInput] = useState('');
+  const [placeholder, setPlaceholder] = useState('위치로 검색');
   const [searchedLocation, setSearchedLocation] = useState({
     address_name: '고양점',
     lat: 37.6585,
@@ -155,7 +173,8 @@ function ShopSelectModal({ onClose }) {
   }); // 고양점 위치
 
   const handleStoreClick = store => {
-    const kakaoMapLink = `https://map.kakao.com/link/to/${store.name},${store.lat},${store.lng}`;
+    const kakaoMapLink = `https://map.kakao.com/link/from/${searchedLocation.address_name},${searchedLocation.lat},${searchedLocation.lng}/to/${store.name},${store.lat},${store.lng}`;
+
     window.open(kakaoMapLink, '_blank');
   };
 
@@ -173,36 +192,67 @@ function ShopSelectModal({ onClose }) {
         console.log(data[0]);
         setSearchedLocation({ address_name: data[0].address_name, lat: data[0].y, lng: data[0].x });
         setSortedStores(calculateDistance({ lat: data[0].y, lng: data[0].x }));
-        console.log(sortedStores);
-        console.log('searchedLocation:', searchedLocation.address_name);
       } else {
         console.error('Search failed:', status);
       }
     });
   };
+  const handleCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async position => {
+          const { latitude, longitude } = position.coords;
+          console.log('현재 위치:', latitude, longitude);
+          const address = await getAddressFromCoords(longitude, latitude);
+          setSearchedLocation({ address_name: address, lat: latitude, lng: longitude });
+          setSortedStores(calculateDistance({ lat: latitude, lng: longitude }));
+        },
+        error => {
+          alert('위치 정보를 가져올 수 없습니다.', error);
+        },
+      );
+    }
+  };
   return (
     <>
-      <S_ShopSelectModal onClick={handleCloseBackgroundClick} className="font-gamja text-xl">
+      <S_ShopSelectModal onClick={handleCloseBackgroundClick} className="font-Hakgyoansim text-xl">
         <div className="modal-content" onClick={e => e.stopPropagation()}>
-          <img className="bg" src="/img/bg_manga.png" alt="" />
+          <img className="bg" src="/img/bg_manga-2.png" alt="" />
           <div className="map-contents">
             <div className="search">
               <img className="search-bg" src="/img/btn_orange.png" alt="" />
               <div className="search-content">
-                <BiCurrentLocation className="icon cursor-pointer" />
-                <input
-                  type="text"
-                  className="search-input"
-                  placeholder="위치로 검색"
-                  value={searchInput}
-                  onChange={e => setSearchInput(e.target.value)}
-                />
-                <IoMdSearch className="icon cursor-pointer" onClick={handleSearch} />
+                <div className="contents">
+                  <BiCurrentLocation
+                    onClick={() => {
+                      handleCurrentLocation();
+                    }}
+                    className="icon cursor-pointer"
+                  />
+                  <input
+                    type="text"
+                    className="search-input"
+                    placeholder={placeholder}
+                    value={searchInput}
+                    onFocus={() => {
+                      setPlaceholder('');
+                    }}
+                    onBlur={() => {
+                      setPlaceholder('위치로 검색');
+                    }}
+                    onChange={e => setSearchInput(e.target.value)}
+                  />
+                  <IoMdSearch className="icon cursor-pointer" onClick={handleSearch} />
+                </div>
               </div>
             </div>
             <div className="desc">매장은 "{searchedLocation.address_name}" 에서의 거리순으로 나열되어 있습니다.</div>
             <div className="btn-list">
-              <div className="btn-item" onClick={handleStoreClick}>
+              <div
+                className="btn-item"
+                onClick={() => {
+                  handleStoreClick(sortedStores[0]);
+                }}>
                 <img className="btn-green" src="/img/btn_green.png" alt="" />
                 <span className="store-name">1. {sortedStores[0].name}</span>
                 <span className="store-dist">{sortedStores[0].distance}km</span>
@@ -223,8 +273,8 @@ function ShopSelectModal({ onClose }) {
                 <span className="store-dist">{sortedStores[3].distance}km</span>
               </div>
             </div>
+            <img className="close-btn" onClick={onClose} src="/img/btn_close_off.png" alt="" />
           </div>
-          <img className="close-btn" onClick={onClose} src="/img/btn_close_off.png" alt="" />
         </div>
       </S_ShopSelectModal>
     </>

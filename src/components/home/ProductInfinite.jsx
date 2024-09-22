@@ -1,5 +1,5 @@
 import * as S from '../../styles/home/ProductInfinite.style';
-import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
+import { IoBookmarkOutline } from 'react-icons/io5';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import generateProductsDetailData from '../../data/home/productsDetailData';
 import { Link } from 'react-router-dom';
@@ -12,13 +12,12 @@ function ProductInfinite() {
   const observerRef = useRef(null); // 마지막 요소를 관찰할 ref
 
   const loadMoreProducts = useCallback(async () => {
-    if (loading || !hasMore) return; // 이미 로딩 중이거나 더 불러올 데이터가 없으면 중단
+    if (loading || !hasMore) return;
     setLoading(true);
-    // 새로운 페이지 데이터 추가
     const newProducts = generateProductsDetailData(page, 12);
     if (newProducts.length > 0) {
       setProducts(prevProducts => [...prevProducts, ...newProducts]);
-      setPage(prevPage => prevPage + 1); // 다음 페이지로 설정
+      setPage(prevPage => prevPage + 1);
     } else {
       setHasMore(false); // 더 이상 불러올 데이터가 없을 경우
     }

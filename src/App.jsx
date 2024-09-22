@@ -76,7 +76,7 @@ function App() {
         },
         {
           path: 'shop',
-          element: <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />,
+          element: <Shop isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} toggleHeader={toggleHeader} />,
         },
         {
           path: 'style',

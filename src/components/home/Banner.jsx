@@ -9,30 +9,35 @@ const BannerSection = styled.section`
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  border: 2px solid black;
+  border: 1px solid black;
+  overflow: hidden;
 `;
 const LeftContentBox = styled.div`
   position: absolute;
   top: 50%;
-  left: 15%;
+  left: -20px;
   transform: translateY(-50%);
   text-align: left;
-  color: #000000;
+  color: transparent;
+  -webkit-text-stroke: 1px #000000;
+  letter-spacing: -20px;
   z-index: -1;
 `;
 
 const RightContentBox = styled.div`
   position: absolute;
   top: 50%;
-  right: -30px;
+  left: 50%;
   transform: translateY(-50%);
   text-align: right;
-  color: #000000;
+  color: transparent;
+  -webkit-text-stroke: 1px #000000;
+  letter-spacing: -20px;
   z-index: -1;
 `;
 
 const Title = styled.h2`
-  font-size: 150px;
+  font-size: 200px;
   font-weight: bold;
 `;
 

@@ -6,7 +6,19 @@ const stores = [
   { name: '기흥점', address: '용인시 기흥구 신고매로 62', lat: 37.2694, lng: 127.1191 },
   { name: '동부산점', address: '부산광역시 기장군 기장읍 동부산관광3로 17', lat: 35.2437, lng: 129.2227 },
 ];
+export const getAddressFromCoords = (lng, lat) => {
+  return new Promise((resolve, reject) => {
+    const geocoder = new kakao.maps.services.Geocoder();
 
+    geocoder.coord2Address(lng, lat, (result, status) => {
+      if (status === kakao.maps.services.Status.OK) {
+        resolve(result[0].address.address_name);
+      } else {
+        reject('Geocoder failed');
+      }
+    });
+  });
+};
 export const calculateDistance = searchedLocation => {
   if (!kakao) {
     console.error('Kakao map SDK is not loaded');

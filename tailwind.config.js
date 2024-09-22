@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         gamja: ['gamja-flower-regular', 'cursive'],
+        Hakgyoansim: ['HakgyoansimDunggeunmisoTTF-B', 'sans-serif'],
       },
     },
   },

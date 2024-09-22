@@ -29,8 +29,7 @@ export const ProductWrap = styled.div`
     }
     .product-item {
       width: 20%;
-      /* border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 8px; */
+      /* border: 1px solid rgba(0, 0, 0, 0.1); */
       @media (max-width: 960px) {
         min-width: 150px !important;
       }
