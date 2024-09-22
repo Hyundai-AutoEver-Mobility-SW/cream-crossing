@@ -24,7 +24,7 @@ function CartModalView({ isOpen, onClose, product }) {
 
               <div className="title-text-labels flex flex-col">
                 <div className="labels flex gap-x-[2px] gap-y-0">
-                  <p className="text-body-label-cost text-sm">{product.price}</p>
+                  <p className="text-body-label-cost text-sm">{product.price.toLocaleString()}원</p>
                 </div>
               </div>
             </div>

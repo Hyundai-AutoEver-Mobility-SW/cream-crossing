@@ -6,9 +6,9 @@ const productList = [
     description: '(W) 이요 특징은 진짜 진짜 귀엽다는 것 - bunny',
     variety: 'bunny',
     shippingWay: '일반배송',
-    price: '12,000원',
+    price: 12000,
     shippingCost: '5,000원',
-    allCost: '95,000원',
+    allCost: '17,000원',
   },
   {
     id: 2,
@@ -17,9 +17,9 @@ const productList = [
     description: '(W) 릴리 특징은 진짜 진짜 예쁘다는 것 - bunny',
     variety: 'bunny',
     shippingWay: '일반배송',
-    price: '13,000원',
+    price: 13000,
     shippingCost: '5,000원',
-    allCost: '95,000원',
+    allCost: '18,000원',
   },
   {
     id: 3,
@@ -28,9 +28,9 @@ const productList = [
     description: '(W) 릴리 특징은 진짜 진짜 예쁘다는 것 - bunny',
     variety: 'bunny',
     shippingWay: '일반배송',
-    price: '12,000원',
+    price: 12000,
     shippingCost: '5,000원',
-    allCost: '95,000원',
+    allCost: '17,000원',
   },
   {
     id: 4,
@@ -39,9 +39,9 @@ const productList = [
     description: '(W) 릴리 특징은 진짜 진짜 예쁘다는 것 - bunny',
     variety: 'bunny',
     shippingWay: '일반배송',
-    price: '13,000원',
+    price: 13000,
     shippingCost: '5,000원',
-    allCost: '95,000원',
+    allCost: '18,000원',
   },
   // 다른 상품 추가 가능
 ];

@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
 import CartModalView from '../modal/CartModalView';
-import CartOrderInfo from './CartOrderInfo';
-import productList from './data/productList';
-function CartContent({ product, allCheck }) {
+
+function CartContent({ product, isChecked, onItemCheck, onDelete }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen); // 상태를 토글하여 모달 열고 닫기
   };
 
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  // const [selectedProducts, setSelectedProducts] = useState([]);
 
-  useEffect(() => {
-    console.log(allCheck);
-  }, [allCheck]);
+  // useEffect(() => {
+  //   console.log(allCheck);
+  // }, [allCheck]);
+
+  const handleCheckboxChange = e => {
+    onItemCheck(product.id, e.target.checked);
+  };
 
   return (
     <div className="cart-content w-full bg-gray-100">
@@ -22,11 +25,20 @@ function CartContent({ product, allCheck }) {
         <div className="divider h-[24px]"></div>
         <div className="content-header rounded-t-lg p-[20px_16px_10px] bg-white flex justify-between">
           <div className="group flex items-center">
-            <input type="checkbox" className="form-checkbox h-5 w-5 text-blue-600 mr-2" />
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+              className="form-checkbox h-5 w-5 text-blue-600 mr-2"
+            />
             <div className="text-body font-semibold text-sm"></div>
           </div>
           <div className="group">
-            <button className="ml-2 text-xs cursor-pointer border-box rounded-[100px] overflow-hidden px-[10px] py-[4px] shadow-[inset_0px_0px_0px_1px_rgb(235,235,235)]">
+            <button
+              className="ml-2 text-xs cursor-pointer border-box rounded-[100px] overflow-hidden px-[10px] py-[4px] shadow-[inset_0px_0px_0px_1px_rgb(235,235,235)]"
+              onClick={() => {
+                onDelete(product.id);
+              }}>
               선택 삭제
             </button>
           </div>
@@ -48,6 +60,41 @@ function CartContent({ product, allCheck }) {
               </div>
               {/* <div className="text-sm">배송비: {product.shippingCost}</div> */}
             </div>
+          </div>
+        </div>
+
+        <div className="text-table-right-align pt-[3px] px-4 pb-[7px] bg-white">
+          <div className="title-labels flex justify-between">
+            <div className="text-body-title gap-y-0 gap-x-0.5 pt-0.5 pb-0 px-0">
+              <p className="text-gray-900 text-left w-[inherit] text-sm">상품금액</p>
+            </div>
+            <div className="text-table-labels flex flex-col">
+              <div className="labels">
+                <div className="text-body-label gap-y-[0px] gap-x-[2px]">
+                  <p className="text-gray-900 font-bold text-[16px]">{product.price.toLocaleString()}원</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-table-right-align pt-[3px] px-[16px] pb-[23px] bg-white">
+          <div className="title-labels flex justify-between">
+            <div className="text-body-title gap-y-0 gap-x-0.5">
+              <p className="text-[#909090] text-left w-[inherit] text-sm">배송비</p>
+            </div>
+            <div className="text-table-labels flex flex-col">
+              <div className="labels">
+                <div className="text-body-label gap-y-[0px] gap-x-[2px]">
+                  <p className="text-gray-900 text-sm">{product.shippingCost}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="text-body-description gap-y-[0px] gap-x-[2px] mt-[2px] mb-0">
+            <p className="text-[13px] text-[rgb(144,144,144)] text-right w-[inherit]">
+              검수 후 배송 · 5-7일 내 도착 예정
+            </p>
           </div>
         </div>
 
