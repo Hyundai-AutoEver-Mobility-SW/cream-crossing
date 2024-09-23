@@ -40,7 +40,7 @@ function CartModalView({ isOpen, onClose, product }) {
 
               <div className="title-text-labels flex flex-col">
                 <div className="labels flex gap-x-[2px] gap-y-0">
-                  <p className="text-body-label-cost text-sm">{product.shippingCost}</p>
+                  <p className="text-body-label-cost text-sm">5,000원</p>
                 </div>
               </div>
             </div>

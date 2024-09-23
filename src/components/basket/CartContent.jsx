@@ -11,7 +11,7 @@ function CartContent({ product, isChecked, onItemCheck, onDelete }) {
   const shippingCost = '5,000원';
   const shippingWay = '일반배송';
   const variety = product.desc;
-  const allCost = product.allCost;
+  const allCost = (product.price + 5000).toLocaleString();
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen); // 상태를 토글하여 모달 열고 닫기
   };
@@ -124,7 +124,7 @@ function CartContent({ product, isChecked, onItemCheck, onDelete }) {
           </div>
           <div className="right">
             <div className="text-body gap-x-[2px] gap-y-0 flex items-center">
-              <p className="text-sm text-gray-900 text-right w-auto font-semibold">{allCost}</p>
+              <p className="text-sm text-gray-900 text-right w-auto font-semibold">{allCost}원</p>
               <div className="content-image rounded-full w-[16px] h-[16px] cursor-pointer" onClick={toggleModal}>
                 <picture>
                   <img src="src/assets/cartimg/question.png" alt="" />

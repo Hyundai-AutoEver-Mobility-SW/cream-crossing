@@ -45,7 +45,7 @@ const mockData = [
     price_desc: '즉시구매가',
     imgNumber: 5,
     imgSrc: '/animal/img5.webp',
-    price: '2,900,000원',
+    price: 2900000,
   },
   {
     id: 5,
