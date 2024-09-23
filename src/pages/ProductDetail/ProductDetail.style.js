@@ -232,9 +232,13 @@ export const CartButton = styled.button`
   color: #333;
   display: flex;
   justify-content: center;
-  background-color: white;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgba(34, 42, 48, 0.1);
+  }
 `;
 
 export const BenefitWrapper = styled.div`

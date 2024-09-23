@@ -1,13 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CartContent from './CartContent';
 import CartOrderInfo from './CartOrderInfo';
-import productListData from './data/productList'; // productList의 복사본
 import CartFooter from './CartFooter';
 import ProductInfinite from '../home/ProductInfinite';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../../redux/action';
 
 function Basket() {
   // productList의 복사본
-  const [productList, setProductList] = useState(productListData);
+  // const [productList, setProductList] = useState(productListData);
+  // console.log(productList);
+  const cartItems = useSelector(state => state.cart); // 리듀서에서 가져온 장바구니 데이터
+  const [productList, setProductList] = useState(cartItems);
+  const dispatch = useDispatch();
+
+  // Redux 상태가 변경될 때마다 productList를 갱신
+  useEffect(() => {
+    if (cartItems) {
+      setProductList(cartItems); // Redux에서 가져온 장바구니 데이터로 설정
+    }
+  }, [cartItems]);
 
   // totalPayment 저장할 상태
   const [totalPayment, setTotalPayment] = useState(0);
@@ -61,6 +73,11 @@ function Basket() {
     const updatedCheckedItems = { ...checkedItems };
     delete updatedCheckedItems[productId];
     setCheckedItems(updatedCheckedItems);
+
+    // 리덕스 스토어에서도 해당 상품을 제거하도록 액션 디스패치
+    dispatch(removeFromCart(productId));
+    console.log(productId, '장바구니에서 삭제되었습니다.');
+    console.log(cartItems);
   };
 
   // CartOrderInfo로부터 totalPayment 값을 받아오는 콜백 함수

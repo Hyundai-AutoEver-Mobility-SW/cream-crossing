@@ -2,14 +2,24 @@ import { useEffect, useRef, useState } from 'react';
 import * as S from './ProductDetail.style';
 import { throttle } from 'lodash';
 import { useParams } from 'react-router-dom';
-import { getImgSrc, getPrice } from '../../data/home/productsDetailData';
 import ProductInfinite from '../../components/home/ProductInfinite';
+import mockData from '../../data/home/mockData';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/action';
 
 export const ProductDetail = () => {
-  const { num } = useParams();
+  const { id } = useParams(); // URL 파라미터 값 가져오기
+  // 라우팅에서 URL 파라미터로 받은 값을 설정해야 함, 다른 걸로 하면 못 가져옴
   const [imgPosY, setImgPosY] = useState(0);
   const mainImgFooterRef = useRef(null);
   const scrollFooterRef = useRef(null);
+  const dispatch = useDispatch();
+  const product = mockData.find(item => item.id === Number(id));
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product)); // 장바구니 추가하는 액션 디스패치
+    console.log(product, '장바구니에 추가되었습니다.');
+  };
 
   const checkIntersection = throttle(() => {
     if (!mainImgFooterRef && !scrollFooterRef) return;
@@ -30,10 +40,18 @@ export const ProductDetail = () => {
       window.removeEventListener('scroll', checkIntersection);
     };
   }, [checkIntersection]);
-
-  const imgSrc = getImgSrc(Number(num) + 1);
-  const buyPrice = getPrice(Number(num) * 1000);
-  const sellPrice = getPrice(Number(num) * 1000 * 0.8);
+  // const title = '나이키 에어맥스 2090';
+  // const desc = 'Nike Air Max 2090';
+  // const imgSrc = getImgSrc(Number(num) + 1);
+  // const buyPrice = getPrice(Number(num) * 1000);
+  // const sellPrice = getPrice(Number(num) * 1000 * 0.8);
+  const title = product.name;
+  const desc = product.tags;
+  const imgSrc = product.imgSrc;
+  const recentPrice = product.price * 0.7;
+  const startPrice = product.price * 0.5;
+  const buyPrice = product.price;
+  const sellPrice = product.price * 0.8;
   return (
     <S.ProductDetailWrapper>
       <S.ContentWrapper>
@@ -46,11 +64,11 @@ export const ProductDetail = () => {
           <S.MainRight>
             <S.PriceWrapper>
               <S.PriceTitle>즉시 구매가</S.PriceTitle>
-              <S.PriceValue>{buyPrice}</S.PriceValue>
+              <S.PriceValue>{buyPrice.toLocaleString()}원</S.PriceValue>
             </S.PriceWrapper>
             <S.TitleWrapper>
-              <S.Title>동물의 숲 핑크토끼</S.Title>
-              <S.SubTitle>산토끼 토끼야 어디를 가느냐 깡총깡총 뛰어서 어디를 가느냐</S.SubTitle>
+              <S.Title>{title}</S.Title>
+              <S.SubTitle>{desc}</S.SubTitle>
             </S.TitleWrapper>
             <S.SizeButton>
               <S.ButtonTitle>모든 사이즈</S.ButtonTitle>
@@ -59,11 +77,11 @@ export const ProductDetail = () => {
             <S.ProductInfoWrapper>
               <S.ProductInfoItem $first={'first'}>
                 <S.ProductInfoTitle>최근 거래가</S.ProductInfoTitle>
-                <S.ProductInfoValue>174,000원</S.ProductInfoValue>
+                <S.ProductInfoValue>{recentPrice.toLocaleString()}원</S.ProductInfoValue>
               </S.ProductInfoItem>
               <S.ProductInfoItem>
                 <S.ProductInfoTitle>발매가</S.ProductInfoTitle>
-                <S.ProductInfoValue>119,000원</S.ProductInfoValue>
+                <S.ProductInfoValue>{startPrice.toLocaleString()}원</S.ProductInfoValue>
               </S.ProductInfoItem>
               <S.ProductInfoItem>
                 <S.ProductInfoTitle>모델번호</S.ProductInfoTitle>
@@ -81,14 +99,14 @@ export const ProductDetail = () => {
             <S.ColorButtonWrapper>
               <S.ColorButton $color={'red'}>
                 <S.ColorButtonTitle>구매</S.ColorButtonTitle>
-                <S.ColorButtonPrice>{buyPrice}</S.ColorButtonPrice>
+                <S.ColorButtonPrice>{buyPrice.toLocaleString()}원</S.ColorButtonPrice>
               </S.ColorButton>
               <S.ColorButton $color={'green'}>
                 <S.ColorButtonTitle>판매</S.ColorButtonTitle>
-                <S.ColorButtonPrice>{sellPrice}</S.ColorButtonPrice>
+                <S.ColorButtonPrice>{sellPrice.toLocaleString()}원</S.ColorButtonPrice>
               </S.ColorButton>
             </S.ColorButtonWrapper>
-            <S.CartButton>장바구니</S.CartButton>
+            <S.CartButton onClick={handleAddToCart}>장바구니</S.CartButton>
             <S.BenefitWrapper>
               <S.BenefitTitleWrapper>
                 <S.BenefitTitle>추가 혜택</S.BenefitTitle>

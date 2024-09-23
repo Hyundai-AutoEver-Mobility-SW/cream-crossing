@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import CartModalView from '../modal/CartModalView';
 
 function CartContent({ product, isChecked, onItemCheck, onDelete }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const imgSrc = product.imgSrc;
+  const desc = product.tags;
+  const name = product.name;
+  const price = product.price.toLocaleString();
+  const shippingCost = '5,000원';
+  const shippingWay = '일반배송';
+  const variety = product.desc;
+  const allCost = product.allCost;
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen); // 상태를 토글하여 모달 열고 닫기
   };
-
-  // const [selectedProducts, setSelectedProducts] = useState([]);
-
-  // useEffect(() => {
-  //   console.log(allCheck);
-  // }, [allCheck]);
 
   const handleCheckboxChange = e => {
     onItemCheck(product.id, e.target.checked);
@@ -46,17 +47,17 @@ function CartContent({ product, isChecked, onItemCheck, onDelete }) {
         <div>
           <div className="product-list-info p-[0px_16px_20px] bg-white w-full flex items-center space-x-4">
             <div className="thumbnail rounded-lg bg-gray-200 w-[80px] h-[80px] overflow-hidden">
-              <img src={product.image} alt={product.name} className="product-image w-full h-full object-cover" />
+              <img src={imgSrc} alt={name} className="product-image w-full h-full object-cover" />
             </div>
             <div className="content-list-vertical ">
               <div className="content-text-description gap-x-0 gap-y-[2px] mt-[2px] mb-0 mx-0">
-                <div className=" text-sm text-gray-900 text-left gap-x-0 gap-y-[2px]">{product.name}</div>
+                <div className=" text-sm text-gray-900 text-left gap-x-0 gap-y-[2px]">{name}</div>
 
-                <div className="text-[13px] text-gray-400 text-left gap-x-0 gap-y-[2px]">{product.description}</div>
-                <div className="text-[12px] text-gray-400 text-left gap-x-0 gap-y-[2px]">{product.variety}</div>
+                <div className="text-[13px] text-gray-400 text-left gap-x-0 gap-y-[2px]">{desc}</div>
+                <div className="text-[12px] text-gray-400 text-left gap-x-0 gap-y-[2px]">{variety}</div>
               </div>
               <div className=" content-list-bottom mt-2">
-                <div className="text-[14px] font-semibold">{product.shippingWay}</div>
+                <div className="text-[14px] font-semibold">{shippingWay}</div>
               </div>
               {/* <div className="text-sm">배송비: {product.shippingCost}</div> */}
             </div>
@@ -71,7 +72,7 @@ function CartContent({ product, isChecked, onItemCheck, onDelete }) {
             <div className="text-table-labels flex flex-col">
               <div className="labels">
                 <div className="text-body-label gap-y-[0px] gap-x-[2px]">
-                  <p className="text-gray-900 font-bold text-[16px]">{product.price.toLocaleString()}원</p>
+                  <p className="text-gray-900 font-bold text-[16px]">{price}원</p>
                 </div>
               </div>
             </div>
@@ -86,7 +87,7 @@ function CartContent({ product, isChecked, onItemCheck, onDelete }) {
             <div className="text-table-labels flex flex-col">
               <div className="labels">
                 <div className="text-body-label gap-y-[0px] gap-x-[2px]">
-                  <p className="text-gray-900 text-sm">{product.shippingCost}</p>
+                  <p className="text-gray-900 text-sm">{shippingCost}</p>
                 </div>
               </div>
             </div>
@@ -123,7 +124,7 @@ function CartContent({ product, isChecked, onItemCheck, onDelete }) {
           </div>
           <div className="right">
             <div className="text-body gap-x-[2px] gap-y-0 flex items-center">
-              <p className="text-sm text-gray-900 text-right w-auto font-semibold">{product.allCost}</p>
+              <p className="text-sm text-gray-900 text-right w-auto font-semibold">{allCost}</p>
               <div className="content-image rounded-full w-[16px] h-[16px] cursor-pointer" onClick={toggleModal}>
                 <picture>
                   <img src="src/assets/cartimg/question.png" alt="" />

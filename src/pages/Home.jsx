@@ -11,6 +11,7 @@ import HeroAltSection from '../components/home/HeroAltSection';
 import ScrollToView from '../components/home/ScrollToView';
 import * as S from '../styles/Home.style';
 import BannerColor from '../components/home/BannerColor';
+import ProductsAlt from '../components/home/ProductsAlt';
 const Home = () => {
   return (
     <>
@@ -27,7 +28,7 @@ const Home = () => {
         <div className="full-w">
           <Banner imageSrc={'/img/banner/banner01.png'} titleLeft="NEW SPCIEAL" titleRight="ARRIVAL SALE" />
         </div>
-        <Products title={productsData[0].title} subtitle={productsData[0].subtitle} />
+        <ProductsAlt title={productsData[0].title} subtitle={productsData[0].subtitle} />
         <TopAnimal />
         <div className="full-w">
           <BannerColor

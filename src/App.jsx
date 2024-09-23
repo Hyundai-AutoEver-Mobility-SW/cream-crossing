@@ -23,7 +23,6 @@ function App() {
   };
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY);
       if (scrollY > 850 && scrollY <= 2500) {
         setSvgColor('gray');
       } else {
@@ -85,7 +84,7 @@ function App() {
           element: <Style />,
         },
         {
-          path: 'detail/:num',
+          path: 'detail/:id',
           element: <ProductDetail />,
         },
         {

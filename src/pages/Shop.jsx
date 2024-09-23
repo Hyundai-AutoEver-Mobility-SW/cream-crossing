@@ -7,7 +7,6 @@ function Shop({ isModalOpen, setIsModalOpen, toggleHeader }) {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname);
     if (location.pathname === '/shop') {
       setIsModalOpen(true);
       toggleHeader();

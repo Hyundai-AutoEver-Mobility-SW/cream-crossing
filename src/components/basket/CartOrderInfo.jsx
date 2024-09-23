@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 function CartOrderInfo({ productList, onTotalPayment }) {
   const totalPrice = productList.reduce((acc, product) => acc + product.price, 0);
