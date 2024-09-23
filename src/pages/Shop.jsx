@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ShopSelectModal from '../components/common/ShopSelectModal';
 
-function Shop({ isModalOpen, setIsModalOpen }) {
+function Shop({ isModalOpen, setIsModalOpen, toggleHeader }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -10,6 +10,7 @@ function Shop({ isModalOpen, setIsModalOpen }) {
     console.log(location.pathname);
     if (location.pathname === '/shop') {
       setIsModalOpen(true);
+      toggleHeader();
     } else {
       setIsModalOpen(false);
     }
@@ -17,6 +18,7 @@ function Shop({ isModalOpen, setIsModalOpen }) {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    // setShowHeader(!showHeader);
     navigate('/');
   };
 

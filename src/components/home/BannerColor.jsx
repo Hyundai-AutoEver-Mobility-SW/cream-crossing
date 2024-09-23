@@ -4,13 +4,17 @@ const BannerSection = styled.section`
   width: 100%;
   height: 400px;
   margin: 2rem 0;
+
+  /* background-color: rgba(0, 145, 255, 0.3); */
+  /* background-color: rgba(255, 115, 0, 0.3); */
+  background-color: ${props => (props.color === 'blue' ? 'rgba(0, 145, 255, 0.3)' : 'rgba(255, 115, 0, 0.3)')};
   background-image: url(${props => props.imageSrc});
   background-size: 40%;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  border: 1px solid black;
   overflow: hidden;
+  border: 1px solid #222a30;
 `;
 const LeftContentBox = styled.div`
   position: absolute;
@@ -19,7 +23,7 @@ const LeftContentBox = styled.div`
   transform: translateY(-50%);
   text-align: left;
   color: transparent;
-  -webkit-text-stroke: 1px #000000;
+  -webkit-text-stroke: 1px #222a30;
   letter-spacing: -20px;
   z-index: -1;
 `;
@@ -31,7 +35,7 @@ const RightContentBox = styled.div`
   transform: translateY(-50%);
   text-align: right;
   color: transparent;
-  -webkit-text-stroke: 1px #000000;
+  -webkit-text-stroke: 1px #222a30;
   letter-spacing: -20px;
   z-index: -1;
 `;
@@ -41,9 +45,9 @@ const Title = styled.h2`
   font-weight: bold;
 `;
 
-const Banner = ({ imageSrc, titleLeft, titleRight }) => {
+const BannerGray = ({ imageSrc, titleLeft, titleRight, color }) => {
   return (
-    <BannerSection imageSrc={imageSrc}>
+    <BannerSection imageSrc={imageSrc} color={color}>
       <LeftContentBox>
         <Title>{titleLeft}</Title>
       </LeftContentBox>
@@ -55,4 +59,4 @@ const Banner = ({ imageSrc, titleLeft, titleRight }) => {
   );
 };
 
-export default Banner;
+export default BannerGray;
