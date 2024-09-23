@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -8,6 +8,7 @@ import Style from './pages/Style';
 import { ProductDetail } from './pages/ProductDetail/ProductDetail';
 import { ScrollRestoration } from 'react-router-dom';
 import * as S from './styles/App.style';
+import Basket from './components/basket/Basket';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -85,6 +86,10 @@ function App() {
         {
           path: 'detail/:num',
           element: <ProductDetail />,
+        },
+        {
+          path: 'cart',
+          element: <Basket />,
         },
       ],
     },
