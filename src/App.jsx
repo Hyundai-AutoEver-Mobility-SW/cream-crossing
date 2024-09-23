@@ -15,6 +15,7 @@ function App() {
   const [showHeader, setShowHeader] = useState(false);
   const [rotationDegree, setRotationDegree] = useState(0);
   const [svgColor, setSvgColor] = useState('black');
+  const [imgIndex, setImgIndex] = useState(0);
 
   const toggleHeader = () => {
     setShowHeader(!showHeader);
@@ -89,7 +90,7 @@ function App() {
         },
         {
           path: 'cart',
-          element: <Basket />,
+          element: <Basket imgIndex={imgIndex} />,
         },
       ],
     },
