@@ -89,7 +89,7 @@ const price_desc = ['즉시구매가', '구매가'];
 const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
 const getRandomNum = () => Math.floor(Math.random() * 113);
 
-export const getImgSrc = randomNumber => `/src/assets/animal/img${randomNumber}.webp`;
+export const getImgSrc = randomNumber => `/animal/img${randomNumber}.webp`;
 export const getPrice = amount => `${amount.toLocaleString()}원`;
 
 const generateProductsDetailData = (start = 0, limit = 10) => {

@@ -17,7 +17,6 @@ function Shop({ isModalOpen, setIsModalOpen, toggleHeader }) {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    // setShowHeader(!showHeader);
     navigate('/');
   };
 
