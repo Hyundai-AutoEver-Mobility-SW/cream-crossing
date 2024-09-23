@@ -1,12 +1,11 @@
 import * as S from '../../styles/home/Products.style';
-import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
+import { IoBookmarkOutline } from 'react-icons/io5';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useEffect, useState } from 'react';
-import generateProductsDetailData from '../../data/home/productsDetailData';
 import { Link } from 'react-router-dom';
-function Products({ title, subtitle }) {
+import mockData from '../../data/home/mockData';
+function ProductsAlt({ title, subtitle }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -42,8 +41,9 @@ function Products({ title, subtitle }) {
       },
     ],
   };
-  const [products, setProducts] = useState(generateProductsDetailData(0, 10));
-  useEffect(() => {}, []);
+  //   const [products, setProducts] = useState(generateProductsDetailData(0, 10));
+  const products = mockData;
+  //   const [products] = useState(mockData);
   return (
     <>
       <S.ProductWrap>
@@ -56,7 +56,8 @@ function Products({ title, subtitle }) {
         <div className="product-list-wrap">
           <Slider {...settings} className="product-list">
             {products.map((item, i) => (
-              <Link to={`/detail/${item.imgNumber}`} className="product-item" key={i}>
+              <Link to={`/detail/${item.id}`} className="product-item" key={i}>
+                {/* <Link to={`/detail/${item.imgNumber}`} className="product-item" key={i}> */}
                 <div className="item-img">
                   <img src={item.imgSrc} alt="" />
                   <div className="trade-amount">거래 {item.trade_amount}</div>
@@ -73,7 +74,7 @@ function Products({ title, subtitle }) {
                     {' '}
                     {item.tags}
                   </div>
-                  <div className="price">{item.price}</div>
+                  <div className="price">{item.price.toLocaleString()}원</div>
                   <div className="price-desc">{item.price_desc}</div>
                 </div>
               </Link>
@@ -88,4 +89,4 @@ function Products({ title, subtitle }) {
   );
 }
 
-export default Products;
+export default ProductsAlt;

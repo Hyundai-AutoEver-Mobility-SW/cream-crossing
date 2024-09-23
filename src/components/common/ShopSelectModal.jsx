@@ -179,7 +179,6 @@ function ShopSelectModal({ onClose }) {
   };
 
   const handleCloseBackgroundClick = e => {
-    console.log(e.target);
     if (e.target === e.currentTarget) {
       onClose(); // 배경을 클릭했을 때 모달 닫기
     }
@@ -189,7 +188,6 @@ function ShopSelectModal({ onClose }) {
     // 장소 검색 API 호출
     ps.keywordSearch(searchInput, (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {
-        console.log(data[0]);
         setSearchedLocation({ address_name: data[0].address_name, lat: data[0].y, lng: data[0].x });
         setSortedStores(calculateDistance({ lat: data[0].y, lng: data[0].x }));
       } else {
@@ -202,7 +200,6 @@ function ShopSelectModal({ onClose }) {
       navigator.geolocation.getCurrentPosition(
         async position => {
           const { latitude, longitude } = position.coords;
-          console.log('현재 위치:', latitude, longitude);
           const address = await getAddressFromCoords(longitude, latitude);
           setSearchedLocation({ address_name: address, lat: latitude, lng: longitude });
           setSortedStores(calculateDistance({ lat: latitude, lng: longitude }));
