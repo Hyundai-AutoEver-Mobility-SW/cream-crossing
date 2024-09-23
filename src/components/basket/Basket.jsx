@@ -3,6 +3,7 @@ import CartContent from './CartContent';
 import CartOrderInfo from './CartOrderInfo';
 import productListData from './data/productList'; // productList의 복사본
 import CartFooter from './CartFooter';
+import ProductInfinite from '../home/ProductInfinite';
 
 function Basket() {
   // productList의 복사본
@@ -69,69 +70,72 @@ function Basket() {
 
   return (
     <>
-      <div className="mx-auto cart-top">
-        <h1 className="font-bold text-[1.5em] p-4 text-center w-full bg-white">장바구니</h1>
+      <div className="full-w">
+        <div className="mx-auto cart-top mt-10 bg-gray-100">
+          <h1 className="font-bold text-[1.5em] p-4 text-center w-full bg-white">장바구니</h1>
 
-        {/* cart-content에 sticky 적용 */}
-        <div className="content-area block mx-auto sticky top-0 z-10 bg-white">
-          <div className="flex justify-center items-center">
-            <div className="cart-tabs w-[700px] text-center flex relative bg-white">
-              <div className="cart-tab active relative h-[60px] w-1/2 cursor-pointer p-2 border-b border-gray-300">
-                <div className="count font-bold">{productList.length}</div>
-                <div className="title font-semibold text-[13px]">Kream 배송</div>
-              </div>
-              <div className="cart-tab2 relative h-[60px] w-1/2 cursor-pointer p-2 border-b border-gray-300">
-                <div className="count font-bold">0</div>
-                <div className="title font-semibold text-[13px]">브랜드 배송</div>
+          {/* cart-content에 sticky 적용 */}
+          <div className="content-area block mx-auto sticky top-0 z-10 bg-white">
+            <div className="flex justify-center items-center">
+              <div className="cart-tabs w-[700px] text-center flex relative bg-white">
+                <div className="cart-tab active relative h-[60px] w-1/2 cursor-pointer p-2 border-b border-gray-300">
+                  <div className="count font-bold">{productList.length}</div>
+                  <div className="title font-semibold text-[13px]">Kream 배송</div>
+                </div>
+                <div className="cart-tab2 relative h-[60px] w-1/2 cursor-pointer p-2 border-b border-gray-300">
+                  <div className="count font-bold">0</div>
+                  <div className="title font-semibold text-[13px]">브랜드 배송</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="cart-header top-[145px] h-[48px] sticky">
-            <div className="cart-header-wrap w-full sm:w-[700px] h-[48px] mx-auto">
-              <div className="text-header pt-3 pb-0 px-4 bg-white flex justify-between">
-                <div className="group flex items-center">
-                  <input
-                    type="checkbox"
-                    onChange={handleAllCheck}
-                    checked={allCheck}
-                    className="peer h-5 w-5 border-gray-300 rounded-sm checked:bg-black checked:border-black focus:outline-none mr-2"
-                  />
-                  <div className="text-body font-semibold text-sm">
-                    <p>전체 선택</p>
+            <div className="cart-header top-[145px] h-[48px] sticky">
+              <div className="cart-header-wrap w-full sm:w-[700px] h-[48px] mx-auto">
+                <div className="text-header pt-3 pb-0 px-4 bg-white flex justify-between">
+                  <div className="group flex items-center">
+                    <input
+                      type="checkbox"
+                      onChange={handleAllCheck}
+                      checked={allCheck}
+                      className="peer h-5 w-5 border-gray-300 rounded-sm checked:bg-black checked:border-black focus:outline-none mr-2"
+                    />
+                    <div className="text-body font-semibold text-sm">
+                      <p>전체 선택</p>
+                    </div>
+                  </div>
+                  <div className="group">
+                    <button
+                      className="ml-2 text-xs cursor-pointer border-box rounded-[100px] overflow-hidden px-[10px] py-[4px] shadow-[inset_0px_0px_0px_1px_rgb(235,235,235)]"
+                      onClick={() => {
+                        // 선택된 항목 삭제 로직
+                        const updatedProductList = productList.filter(product => !checkedItems[product.id]);
+                        setProductList(updatedProductList);
+
+                        const updatedCheckedItems = {};
+                        setCheckedItems(updatedCheckedItems); // 모든 체크박스 초기화
+                      }}>
+                      전체 삭제
+                    </button>
                   </div>
                 </div>
-                <div className="group">
-                  <button
-                    className="ml-2 text-xs cursor-pointer border-box rounded-[100px] overflow-hidden px-[10px] py-[4px] shadow-[inset_0px_0px_0px_1px_rgb(235,235,235)]"
-                    onClick={() => {
-                      // 선택된 항목 삭제 로직
-                      const updatedProductList = productList.filter(product => !checkedItems[product.id]);
-                      setProductList(updatedProductList);
-
-                      const updatedCheckedItems = {};
-                      setCheckedItems(updatedCheckedItems); // 모든 체크박스 초기화
-                    }}>
-                    전체 삭제
-                  </button>
-                </div>
               </div>
             </div>
           </div>
+
+          {productList.map(product => (
+            <CartContent
+              key={product.id}
+              product={product}
+              isChecked={checkedItems[product.id] || false}
+              onItemCheck={handleItemCheck}
+              onDelete={handleDelete}
+            />
+          ))}
+
+          <CartOrderInfo productList={productList} onTotalPayment={handleTotalPayment} />
+
+          <CartFooter totalPayment={totalPayment} productCount={productList.length} />
         </div>
-
-        {productList.map(product => (
-          <CartContent
-            key={product.id}
-            product={product}
-            isChecked={checkedItems[product.id] || false}
-            onItemCheck={handleItemCheck}
-            onDelete={handleDelete}
-          />
-        ))}
-
-        <CartOrderInfo productList={productList} onTotalPayment={handleTotalPayment} />
-
-        <CartFooter totalPayment={totalPayment} productCount={productList.length} />
+        <ProductInfinite />
       </div>
     </>
   );

@@ -66,9 +66,6 @@ ul {
   margin-left: -50vw; */
 }
 
-.bg-tmp{
-  background-color: #b3b3b3;
-}
 
 .cart-tab.active::after {
   background-color: #222;
