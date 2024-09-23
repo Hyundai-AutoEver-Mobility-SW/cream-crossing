@@ -152,8 +152,8 @@ function Basket() {
 
           <CartFooter totalPayment={totalPayment} productCount={productList.length} />
         </div>
-        <ProductInfinite />
       </div>
+      <ProductInfinite />
     </>
   );
 }
