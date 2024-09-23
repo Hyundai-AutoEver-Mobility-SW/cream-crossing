@@ -86,6 +86,7 @@ function App() {
           path: 'detail/:num',
           element: <ProductDetail />,
         },
+        // <Basket />
       ],
     },
   ]);
