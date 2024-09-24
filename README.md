@@ -1,4 +1,6 @@
 # Cream Crossing
+2024.09.11 ~ 2024.09.24
+
 React 상태관리 복습과 피그마 디자인 실습을 위한 프로젝트
 - Redux를 이용한 상태관리
 - React Router를 통한 라우팅
