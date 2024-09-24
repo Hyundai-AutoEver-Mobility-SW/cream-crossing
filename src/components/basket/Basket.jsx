@@ -77,7 +77,7 @@ function Basket() {
     // 리덕스 스토어에서도 해당 상품을 제거하도록 액션 디스패치
     dispatch(removeFromCart(productId));
     console.log(productId, '장바구니에서 삭제되었습니다.');
-    console.log(cartItems);
+    // console.log(cartItems);
   };
 
   // CartOrderInfo로부터 totalPayment 값을 받아오는 콜백 함수

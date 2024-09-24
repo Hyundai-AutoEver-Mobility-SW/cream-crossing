@@ -28,7 +28,7 @@ export const ProductDetail = () => {
     const rect2 = scrollFooterRef.current.getBoundingClientRect();
 
     if (imgPosY === 0 && rect1.bottom >= rect2.bottom) {
-      console.log(imgPosY, rect1.bottom, rect2.bottom);
+      // console.log(imgPosY, rect1.bottom, rect2.bottom);
       setImgPosY(rect1.bottom);
     } else if (imgPosY && imgPosY < rect2.bottom) setImgPosY(0);
   }, 100);
