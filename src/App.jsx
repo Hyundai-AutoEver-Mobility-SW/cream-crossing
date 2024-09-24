@@ -15,7 +15,6 @@ function App() {
   const [showHeader, setShowHeader] = useState(false);
   const [rotationDegree, setRotationDegree] = useState(0);
   const [svgColor, setSvgColor] = useState('black');
-  const [imgIndex, setImgIndex] = useState(0);
 
   const toggleHeader = () => {
     setShowHeader(!showHeader);
@@ -23,7 +22,8 @@ function App() {
   };
   useEffect(() => {
     const handleScroll = () => {
-      if (scrollY > 850 && scrollY <= 2500) {
+      console.log(scrollY);
+      if (scrollY > 780 && scrollY <= 2700) {
         setSvgColor('gray');
       } else {
         setSvgColor('black');
@@ -89,7 +89,7 @@ function App() {
         },
         {
           path: 'cart',
-          element: <Basket imgIndex={imgIndex} />,
+          element: <Basket />,
         },
       ],
     },
