@@ -1,3 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('./assets/fonts/PretendardVariable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'gamja-flower-regular';
+  src: url('./assets/fonts/GamjaFlower-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HakgyoansimDunggeunmisoTTF-B';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+  font-style: normal;
+}
+body {
+  font-family: 'Pretendard-Regular', sans-serif;
+}
+body,
+button,
+dd,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+legend,
+li,
+ol,
+p,
+select,
+table,
+td,
+textarea,
+th,
+ul {
+  margin: 0;
+  padding: 0;
+}
+.home-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.full-w {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* position: relative;
+  left: 50%;
+  margin-left: -50vw; */
+}
+
+
+.cart-tab.active::after {
+  background-color: #222;
+  bottom: -1px;
+  content: '';
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.cart-tab2::after {
+  background-color: #ebebeb;
+  content: '';
+  height: 20px;
+  position: absolute;
+  /* right: 50%; */
+  left: 0%;
+  top: 20px;
+  width: 1px;
+  z-index: 1;
+}
